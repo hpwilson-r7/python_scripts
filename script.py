@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-# Bugs include: Select sorcerer == crash
 # This is so stupid but it helped kill an hour
 import json
 import random
 import textwrap
 
 
-class spellClass:
+class SpellClass:
     bard = 'Bard'
     cleric = 'Cleric'
     druid = 'Druid'
@@ -17,7 +16,7 @@ class spellClass:
     wizard = 'Wizard'
 
 
-class color:
+class Color:
     PURPLE = '\033[95m'
     CYAN = '\033[96m'
     DARKCYAN = '\033[36m'
@@ -34,22 +33,22 @@ class color:
 # Process: Filter json by class (user input)
 # Select random spell from new list
 # Output: spell name
-def chooseSpell(className):
+def choose_spell(class_name):
     # Load the data from the local spells.json file
     with open('spells.json') as f:
         data = json.load(f)
         # Filter the data by class
-        filteredData = [spell for spell in data if spell['class'] == className]
+        filteredData = [spell for spell in data if class_name in spell['class']]
         # Select random spell
         randomSpell = filteredData[random.randint(0, len(filteredData) - 1)]
         # Print random spell
-        return color.GREEN + randomSpell['name'] + color.END + "\n" + textwrap.fill(randomSpell['desc'], width=100)
+        return Color.GREEN + randomSpell['name'] + Color.END + "\n" + textwrap.fill(randomSpell['desc'], width=100)
 
 
-# Print out list of all spellClass variables
+# Print out list of all SpellClass variables
 # Then take user input for class
 # Return class name
-def chooseClass():
+def choose_class():
     print("+ " + "Bard - An inspiring magician whose power echoes the music of creation")
     print("+ " + "Cleric - A priestly champion who wields divine magic in service of a higher power")
     print("+ " + "Druid - A priest of the Old Faith, wielding the powers of nature and adopting animal forms")
@@ -60,20 +59,20 @@ def chooseClass():
     print("+ " + "Warlock - A wielder of magic that is derived from a bargain with an extraplanar entity")
     print("+ " + "Wizard - A scholarly magic-user capable of manipulating the structures of reality")
     print()
-    className = input(color.BOLD + color.UNDERLINE + "Choose a class:" + color.END + " ")
+    class_name = input(Color.BOLD + Color.UNDERLINE + "Choose a class:" + Color.END + " ")
     # Error handling
-    while className not in spellClass.__dict__.values():
-        className = input(color.BOLD + color.UNDERLINE + "Choose a class:" + color.END + " ")
+    while class_name not in SpellClass.__dict__.values():
+        class_name = input(Color.BOLD + Color.UNDERLINE + "Choose a class:" + Color.END + " ")
 
     # Return class name
-    return className
+    return class_name
 
 
 if __name__ == '__main__':
     # Title
     print()
-    title = color.BOLD + "SOARCERER'S SPELLBOOK" + color.END
-    sparkle = color.GREEN + "+" + color.END + color.RED + "=" + color.END
+    title = Color.BOLD + "SOARCERER'S SPELLBOOK" + Color.END
+    sparkle = Color.GREEN + "+" + Color.END + Color.RED + "=" + Color.END
     print(sparkle * int(len(title) / 2))
     print(title)
     print(sparkle * int(len(title) / 2))
@@ -81,15 +80,15 @@ if __name__ == '__main__':
     status = True
 
     # Main Loop
-    while status == True:
+    while status is True:
         # Print random entry
-        print('\n' + color.BOLD + chooseSpell(chooseClass()) + color.END + '\n')
+        print('\n' + Color.BOLD + choose_spell(choose_class()) + Color.END + '\n')
         # Continue loop or break
         v = input(
-            "Another? [" + color.GREEN + 'y' + color.END + '/' + color.RED + 'n' + color.END + ']' + "\n").lower()
+            "Another? [" + Color.GREEN + 'y' + Color.END + '/' + Color.RED + 'n' + Color.END + ']' + "\n").lower()
         print()
         if v == 'n':
-            print(color.RED + color.BOLD + "May the sprint begin!" + color.END)
+            print(Color.RED + Color.BOLD + "May the sprint begin!" + Color.END)
             break
         if v == 'y':
             continue
