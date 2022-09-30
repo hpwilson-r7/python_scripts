@@ -49,15 +49,15 @@ def choose_spell(class_name):
 # Then take user input for class
 # Return class name
 def choose_class():
-    print("+ " + "Bard - An inspiring magician whose power echoes the music of creation")
-    print("+ " + "Cleric - A priestly champion who wields divine magic in service of a higher power")
-    print("+ " + "Druid - A priest of the Old Faith, wielding the powers of nature and adopting animal forms")
-    print("+ " + "Paladin - A holy warrior bound to a sacred oath")
+    print("+ " + "Bard - An inspiring magician")
+    print("+ " + "Cleric - A priestly champion")
+    print("+ " + "Druid - A priest of the Old Faith")
+    print("+ " + "Paladin - A holy warrior")
     print(
-        "+ " + "Ranger - A warrior who uses martial prowess and nature magic to combat threats on the edges of civilization")
-    print("+ " + "Sorcerer - A spellcaster who draws on inherent magic from a gift or bloodline")
-    print("+ " + "Warlock - A wielder of magic that is derived from a bargain with an extraplanar entity")
-    print("+ " + "Wizard - A scholarly magic-user capable of manipulating the structures of reality")
+        "+ " + "Ranger - A warrior")
+    print("+ " + "Sorcerer - A spellcaster")
+    print("+ " + "Warlock - A wielder of magic")
+    print("+ " + "Wizard - A scholarly magic-user")
     print()
     class_name = input(Color.BOLD + Color.UNDERLINE + "Choose a class:" + Color.END + " ")
     # Error handling
