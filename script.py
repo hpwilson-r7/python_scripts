@@ -84,7 +84,7 @@ if __name__ == '__main__':
         print('\n' + Color.BOLD + choose_spell(choose_class()) + Color.END + '\n')
         # Continue loop or break
         v = input(
-            "Another? [" + Color.GREEN + 'y' + Color.END + '/' + Color.RED + 'n' + Color.END + ']' + "\n").lower()
+            Color.BOLD + "Choose Another? [" + Color.END + Color.GREEN + 'y' + Color.END + '/' + Color.RED + 'n' + Color.END + ']' + "\n").lower()
         print()
         if v == 'n':
             print(Color.RED + Color.BOLD + "May the sprint begin!" + Color.END)
