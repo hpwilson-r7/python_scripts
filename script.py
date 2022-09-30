@@ -53,13 +53,12 @@ def choose_class():
     print("+ " + "Cleric - A priestly champion")
     print("+ " + "Druid - A priest of the Old Faith")
     print("+ " + "Paladin - A holy warrior")
-    print(
-        "+ " + "Ranger - A warrior")
+    print("+ " + "Ranger - A warrior")
     print("+ " + "Sorcerer - A spellcaster")
     print("+ " + "Warlock - A wielder of magic")
     print("+ " + "Wizard - A scholarly magic-user")
     print()
-    class_name = input(Color.BOLD + Color.UNDERLINE + "Choose a class:" + Color.END + " ")
+    class_name = input(Color.BOLD + Color.UNDERLINE + "Choose a class:" + Color.END + " ").capitalize()
     # Error handling
     while class_name not in SpellClass.__dict__.values():
         class_name = input(Color.BOLD + Color.UNDERLINE + "Choose a class:" + Color.END + " ")
