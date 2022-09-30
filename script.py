@@ -58,10 +58,10 @@ def choose_class():
     print("+ " + "Warlock - A wielder of magic")
     print("+ " + "Wizard - A scholarly magic-user")
     print()
-    class_name = input(Color.BOLD + Color.UNDERLINE + "Choose a class:" + Color.END + " ").capitalize()
+    class_name = input(Color.BOLD + "Choose a class:" + Color.END + " ").capitalize()
     # Error handling
     while class_name not in SpellClass.__dict__.values():
-        class_name = input(Color.BOLD + Color.UNDERLINE + "Choose a class:" + Color.END + " ")
+        class_name = input(Color.BOLD + "Choose a class:" + Color.END + " ")
 
     # Return class name
     return class_name
@@ -73,7 +73,7 @@ if __name__ == '__main__':
     title = Color.BOLD + "SOARCERER'S SPELLBOOK" + Color.END
     sparkle = Color.GREEN + "+" + Color.END + Color.RED + "=" + Color.END
     print(sparkle * int(len(title) / 2))
-    print(title)
+    print((" " * int(len(title) / 8)) + title)
     print(sparkle * int(len(title) / 2))
     print()
     status = True
@@ -84,7 +84,7 @@ if __name__ == '__main__':
         print('\n' + Color.BOLD + choose_spell(choose_class()) + Color.END + '\n')
         # Continue loop or break
         v = input(
-            Color.BOLD + Color.UNDERLINE + "Choose Another?" + Color.END + " [" + Color.GREEN + 'y' + Color.END + '/' + Color.RED + 'n' + Color.END + ']' + "\n").lower()
+            Color.BOLD + "Choose Another?" + Color.END + " [" + Color.GREEN + 'y' + Color.END + '/' + Color.RED + 'n' + Color.END + ']' + "\n").lower()
         print()
         if v == 'n':
             print(Color.RED + Color.BOLD + "May the sprint begin!" + Color.END)
