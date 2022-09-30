@@ -42,7 +42,8 @@ def choose_spell(class_name):
         # Select random spell
         randomSpell = filteredData[random.randint(0, len(filteredData) - 1)]
         # Print random spell
-        return Color.GREEN + randomSpell['name'] + Color.END + "\n" + textwrap.fill(randomSpell['desc'], width=100)
+        return Color.GREEN + randomSpell['name'] + Color.END + "\n" + textwrap.fill(
+            textwrap.shorten(randomSpell['desc'], width=300), width=100)
 
 
 # Print out list of all SpellClass variables
