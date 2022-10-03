@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-# This is so stupid but, it helped kill an hour
+# This is so stupid but it helped kill an hour
+# Error when wrong input is put in
 import json
 import random
+import textwrap
 
 
 class SpellClass:
@@ -41,33 +43,42 @@ def choose_spell(class_name):
         # Select random spell
         randomSpell = filteredData[random.randint(0, len(filteredData) - 1)]
         # Print random spell
-        return randomSpell['name']
+        chosenSpell = randomSpell['desc'].split(".")
+        return Color.GREEN + randomSpell['name'] + Color.END + "\n" + textwrap.fill(
+            ((chosenSpell[0]).replace("<p>", "") + ". " + chosenSpell[1] + "."), width=100)
 
 
 # Print out list of all SpellClass variables
 # Then take user input for class
 # Return class name
 def choose_class():
-    print("Bard")
-    print("Cleric")
-    print("Druid")
-    print("Paladin")
-    print("Ranger")
-    print("Sorcerer")
-    print("Warlock")
-    print("Wizard")
+    print("+ " + "Bard - An inspiring magician")
+    print("+ " + "Cleric - A priestly champion")
+    print("+ " + "Druid - A priest of the Old Faith")
+    print("+ " + "Paladin - A holy warrior")
+    print("+ " + "Ranger - A warrior")
+    print("+ " + "Sorcerer - A spellcaster")
+    print("+ " + "Warlock - A wielder of magic")
+    print("+ " + "Wizard - A scholarly magic-user")
     print()
-    class_name = input("\n" + Color.BOLD + Color.UNDERLINE + "Choose a class: " + Color.END)
+    class_name = input(Color.BOLD + "Choose a class:" + Color.END + " ").capitalize()
     # Error handling
     while class_name not in SpellClass.__dict__.values():
-        class_name = input("\n" + Color.BOLD + Color.UNDERLINE + "Choose a class: " + Color.END)
+        class_name = input(Color.BOLD + "Choose a class:" + Color.END + " ")
 
     # Return class name
     return class_name
 
 
 if __name__ == '__main__':
-
+    # Title
+    print()
+    title = Color.BOLD + "SOARCERER'S SPELLBOOK" + Color.END
+    sparkle = Color.GREEN + "+" + Color.END + Color.RED + "=" + Color.END
+    print(sparkle * int(len(title) / 2))
+    print((" " * int(len(title) / 8)) + title)
+    print(sparkle * int(len(title) / 2))
+    print()
     status = True
 
     # Main Loop
@@ -75,8 +86,11 @@ if __name__ == '__main__':
         # Print random entry
         print('\n' + Color.BOLD + choose_spell(choose_class()) + Color.END + '\n')
         # Continue loop or break
-        v = input("Another? [" + Color.GREEN + 'y' + Color.END + '/' + Color.RED + 'n' + Color.END + ']').lower()
+        v = input(
+            Color.BOLD + "Choose Another?" + Color.END + " [" + Color.GREEN + 'y' + Color.END + '/' + Color.RED + 'n' + Color.END + ']' + "\n").lower()
+        print()
         if v == 'n':
+            print(Color.RED + Color.BOLD + "May the sprint begin!" + Color.END)
             break
         if v == 'y':
             continue
