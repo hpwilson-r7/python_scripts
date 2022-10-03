@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # This is so stupid but it helped kill an hour
 # Error when wrong input is put in
+
 import json
 import random
 import textwrap
@@ -46,6 +47,7 @@ def choose_spell(class_name):
         chosenSpell = randomSpell['desc'].split(".")
         return Color.GREEN + randomSpell['name'] + Color.END + "\n" + textwrap.fill(
             ((chosenSpell[0]).replace("<p>", "") + ". " + chosenSpell[1] + "."), width=100)
+
 
 
 # Print out list of all SpellClass variables
